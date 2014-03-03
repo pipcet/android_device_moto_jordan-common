@@ -97,8 +97,8 @@ BOARD_WITH_CPCAP    := true
 BOARD_MMC_DEVICE    := /dev/block/mmcblk1
 BOARD_SDCARD_DEVICE_PRIMARY   := /dev/block/mmcblk0p1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0
-BOARD_SDEXT_DEVICE  := /dev/block/mmcblk0p2
-BOARD_SYSTEM_DEVICE := /dev/block/mmcblk1p21
+#BOARD_SDEXT_DEVICE  := /dev/block/mmcblk0p2
+BOARD_SYSTEM_DEVICE := /dev/block/mmcblk0p2
 BOARD_DATA_DEVICE   := /dev/block/mmcblk1p25
 
 # Recovery
