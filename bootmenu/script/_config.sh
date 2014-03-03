@@ -3,7 +3,7 @@
 
 export PATH=/sbin
 
-PART_SYSTEM=/dev/block/mmcblk1p21
+PART_SYSTEM=/dev/block/mmcblk0p2
 PART_CACHE=/dev/block/mmcblk1p24
 PART_DATA=/dev/block/mmcblk1p25
 PART_PDS=/dev/block/mmcblk1p7
