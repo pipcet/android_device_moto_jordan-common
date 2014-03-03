@@ -1,5 +1,10 @@
 # Required tools and blobs for bootstrap
 bm_device = device/moto/jordan-common
+
+PRODUCT_PACKAGES += \
+	hbootuser \
+	safestrapmenu \
+
 include $(all-subdir-makefiles)
 
 # 2nd-boot profiles
@@ -36,8 +41,6 @@ PRODUCT_COPY_FILES += \
 	${bm_device}/bootstrap/binary/logwrapper:system/bin/logwrapper \
 	${bm_device}/bootstrap/binary/logwrapper.bin:system/bin/logwrapper.bin \
 	${bm_device}/profiles/2nd-boot/hboot_recovery.cfg:system/bootstrap/2nd-boot/hboot_recovery.cfg \
-	${bm_device}/bootstrap/binary/hbootuser:system/bootstrap/2nd-boot/hbootuser \
-	${bm_device}/bootstrap/binary/safestrapmenu:system/bootstrap/2nd-boot/safestrapmenu \
 	${bm_device}/bootstrap/binary/busybox:system/bootstrap/binary/busybox \
 	$(bm_device)/twrp.fstab:recovery/root/etc/twrp.fstab \
 	$(OUT)/ramdisk-recovery.img:system/bootstrap/2nd-boot/ramdisk-recovery \
