@@ -2,6 +2,7 @@
 bm_device = device/moto/jordan-common
 
 PRODUCT_PACKAGES += \
+	2nd-init \
 	hbootuser \
 	safestrapmenu \
 
