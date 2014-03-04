@@ -39,7 +39,6 @@ PRODUCT_COPY_FILES += \
 # prebuilt binaries
 PRODUCT_COPY_FILES += \
 	${bm_device}/bootstrap/binary/logwrapper:system/bin/logwrapper \
-	${bm_device}/bootstrap/binary/logwrapper.bin:system/bin/logwrapper.bin \
 	${bm_device}/profiles/2nd-boot/hboot_recovery.cfg:system/bootstrap/2nd-boot/hboot_recovery.cfg \
 	${bm_device}/bootstrap/binary/busybox:system/bootstrap/binary/busybox \
 	$(bm_device)/twrp.fstab:recovery/root/etc/twrp.fstab \
