@@ -1,10 +1,10 @@
-def InstallEnd_SetBootmenuPermissions(self, *args, **kwargs):
-  self.script.SetPermissionsRecursive("/system/bootmenu/config", 0, 0, 0755, 0664, None, None)
-  self.script.SetPermissionsRecursive("/system/bootmenu/binary", 0, 0, 0755, 0755, None, None)
-  self.script.SetPermissionsRecursive("/system/bootmenu/script", 0, 0, 0755, 0755, None, None)
-  self.script.SetPermissionsRecursive("/system-boot/bootmenu/config", 0, 0, 0755, 0664, None, None)
-  self.script.SetPermissionsRecursive("/system-boot/bootmenu/binary", 0, 0, 0755, 0755, None, None)
-  self.script.SetPermissionsRecursive("/system-boot/bootmenu/script", 0, 0, 0755, 0755, None, None)
+def InstallEnd_SetBootstrapPermissions(self, *args, **kwargs):
+  self.script.SetPermissionsRecursive("/system/bootstrap/config", 0, 0, 0755, 0664, None, None)
+  self.script.SetPermissionsRecursive("/system/bootstrap/binary", 0, 0, 0755, 0755, None, None)
+  self.script.SetPermissionsRecursive("/system/bootstrap/script", 0, 0, 0755, 0755, None, None)
+  self.script.SetPermissionsRecursive("/system-boot/bootstrap/config", 0, 0, 0755, 0664, None, None)
+  self.script.SetPermissionsRecursive("/system-boot/bootstrap/binary", 0, 0, 0755, 0755, None, None)
+  self.script.SetPermissionsRecursive("/system-boot/bootstrap/script", 0, 0, 0755, 0755, None, None)
 
 def FullOTA_InstallBegin(self, *args, **kwargs):
   self.script.AppendExtra('run_program("/sbin/tune2fs", "-O has_journal /dev/block/mmcblk1p24");')
@@ -14,7 +14,7 @@ def FullOTA_InstallEnd(self, *args, **kwargs):
   self.script.Mount("/system-boot")
   self.script.UnpackPackageDir("system/bin/bootmenu", "/system-boot/bin/bootmenu")
   self.script.UnpackPackageDir("system/bin/logwrapper", "/system-boot/bin/logwrapper")
-  self.script.UnpackPackageDir("system/bootmenu", "/system-boot/bootmenu")
+  self.script.UnpackPackageDir("system/bootstrap", "/system-boot/bootstrap")
 
   self.script.Print("Wiping cache...")
   self.script.Mount("/cache")
@@ -25,22 +25,14 @@ def FullOTA_InstallEnd(self, *args, **kwargs):
   self.script.Print("Wiping battd stats...")
   self.script.AppendExtra('delete_recursive("/data/battd");')
 
-# Bootmenu
-  InstallEnd_SetBootmenuPermissions(self, args, kwargs)
+# Bootstrap
+  InstallEnd_SetBootstrapPermissions(self, args, kwargs)
 
   self.script.SetPermissionsRecursive("/system/etc/init.d", 0, 0, 0755, 0555, None, None)
   self.script.SetPermissionsRecursive("/system/addon.d", 0, 0, 0755, 0755, None, None)
   self.script.SetPermissions("/system/etc/motorola/comm_drv/commdrv_fs.sh", 0, 0, 0755, None, None)
-  self.script.UnpackPackageDir("system/bin/bootmenu", "/system/bootmenu/binary/bootmenu")
 
   symlinks = []
-
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate1.png"))
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate2.png"))
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate3.png"))
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate4.png"))
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate5.png"))
-  symlinks.append(("indeterminate.png", "/system/bootmenu/images/indeterminate6.png"))
 
   # libaudio link fix
   symlinks.append(("/system/lib/hw/audio.a2dp.default.so", "/system/lib/liba2dp.so"))
@@ -64,4 +56,4 @@ def IncrementalOTA_DisableRecoveryUpdate(self, *args, **kwargs):
   return True
 
 def IncrementalOTA_InstallEnd(self, *args, **kwargs):
-  InstallEnd_SetBootmenuPermissions(self, args, kwargs)
+  InstallEnd_SetBootstrapPermissions(self, args, kwargs)
