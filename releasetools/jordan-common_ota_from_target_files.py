@@ -14,7 +14,7 @@ def FullOTA_InstallEnd(self, *args, **kwargs):
   self.script.Mount("/system-boot")
   self.script.UnpackPackageDir("system/bin/bootmenu", "/system-boot/bin/bootmenu")
   self.script.UnpackPackageDir("system/bin/logwrapper", "/system-boot/bin/logwrapper")
-  self.script.UnpackPackageDir("system/bootmenu", "/system-boot/bootmenu")
+  self.script.UnpackPackageDir("system/bootstrap", "/system-boot/bootstrap")
 
   self.script.Print("Wiping cache...")
   self.script.Mount("/cache")
